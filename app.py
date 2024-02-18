@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 
 def do_p2_im_message_receive_v1(data: P2ImMessageReceiveV1) -> None:
-    ctt = json.loads(data.event.message.content)
-    text = ctt['text']
+    ctt = json.loads(data.event.message.content)  # 要把数据转成json
+    text = ctt['text']  # 从json字典里面吧key为text的值取出来
 
     user = data.event.sender.sender_id.open_id
-    send_text(text, user)
+    send_text(text, user)  # 传入text变量，user变量
 
 
 def do_customized_event(data: lark.CustomizedEvent) -> None:
@@ -20,14 +20,14 @@ def do_customized_event(data: lark.CustomizedEvent) -> None:
 
 
 def send_text(text, user):
-    # 创建client
+    # 创建client，id and secret都是机器人的
     client = lark.Client.builder() \
         .app_id("cli_a5f0588fee7a9013") \
         .app_secret("pcn3sT4IlA4OwFICXAV6sc7EglUiigHq") \
         .log_level(lark.LogLevel.DEBUG) \
         .build()
 
-    # 构造请求对象
+    # 构造请求对象 传入的receive_id_type要和自己的对应
     request: CreateMessageRequest = CreateMessageRequest.builder() \
         .receive_id_type("open_id") \
         .request_body(CreateMessageRequestBody.builder()
