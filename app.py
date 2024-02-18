@@ -2,20 +2,55 @@ import lark_oapi as lark
 from lark_oapi.adapter.flask import *
 from lark_oapi.api.im.v1 import *
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, json
 
 app = Flask(__name__)
 
 
 def do_p2_im_message_receive_v1(data: P2ImMessageReceiveV1) -> None:
-    print(lark.JSON.marshal(data))
+    ctt = json.loads(data.event.message.content)
+    text = ctt['text']
+
+    user = data.event.sender.sender_id.open_id
+    send_text(text, user)
 
 
 def do_customized_event(data: lark.CustomizedEvent) -> None:
     print(lark.JSON.marshal(data))
 
 
-handler = lark.EventDispatcherHandler.builder( "", "sIbA8tRAgaRNQo9MjKsZUbvYMTp1jXo0", lark.LogLevel.DEBUG) \
+def send_text(text, user):
+    # 创建client
+    client = lark.Client.builder() \
+        .app_id("cli_a5f0588fee7a9013") \
+        .app_secret("pcn3sT4IlA4OwFICXAV6sc7EglUiigHq") \
+        .log_level(lark.LogLevel.DEBUG) \
+        .build()
+
+    # 构造请求对象
+    request: CreateMessageRequest = CreateMessageRequest.builder() \
+        .receive_id_type("open_id") \
+        .request_body(CreateMessageRequestBody.builder()
+                      .receive_id(user)
+                      .msg_type("text")
+                      .content("{\"text\":\""+text+"\"}")
+                      .build()) \
+        .build()
+
+    # 发起请求
+    response: CreateMessageResponse = client.im.v1.message.create(request)
+
+    # 处理失败返回
+    if not response.success():
+        lark.logger.error(
+            f"client.im.v1.message.create failed, code: {response.code}, msg: {response.msg}, log_id: {response.get_log_id()}")
+        return
+
+    # 处理业务结果
+    lark.logger.info(lark.JSON.marshal(response.data, indent=4))
+
+
+handler = lark.EventDispatcherHandler.builder("", "sIbA8tRAgaRNQo9MjKsZUbvYMTp1jXo0", lark.LogLevel.DEBUG) \
     .register_p2_im_message_receive_v1(do_p2_im_message_receive_v1) \
     .register_p1_customized_event("message", do_customized_event) \
     .build()
