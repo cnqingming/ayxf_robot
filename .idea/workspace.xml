@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="add class student and comment">
-      <change afterPath="$PROJECT_DIR$/document.py" afterDir="false" />
+    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="[Document] Refactor function &#10; &#10;[Client]abstract variable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708403391496</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="[Document] Refactor function &#10; &#10;[Client]abstract variable">
+      <option name="closed" value="true" />
+      <created>1708578673810</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708578673810</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,7 +144,8 @@
     <MESSAGE value="add massage function" />
     <MESSAGE value="add massage function（添加了注释版" />
     <MESSAGE value="add class student and comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="add class student and comment" />
+    <MESSAGE value="[Document] Refactor function &#10; &#10;[Client]abstract variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Document] Refactor function &#10; &#10;[Client]abstract variable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -155,7 +162,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>25</line>
+          <line>24</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

@@ -1,4 +1,4 @@
-import lark_oapi as lark
+import lark_oapi as lark  # import是倒入外部库
 import lark_oapi.api.wiki.v2 as wiki_v2
 import lark_oapi.api.im.v1 as im_v1
 
@@ -20,12 +20,12 @@ def list_space_request(client: lark.Client):
     # 处理业务结果
     lark.logger.info(lark.JSON.marshal(response.data, indent=4))
 
-    result = []
+    result = []  # 创建一个result的空列表
 
 
-    for item in  response.data.items:
+    for item in  response.data.items:  # 遍历 response.data.items
         name_text = item.name
-        result.append(name_text)
+        result.append(name_text)  # 将name_text的值添加到result
 
     return result
 

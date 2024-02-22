@@ -19,11 +19,10 @@ def do_p2_im_message_receive_v1(data: P2ImMessageReceiveV1) -> None:
         app_secret="pcn3sT4IlA4OwFICXAV6sc7EglUiigHq"
     ).create_client()
 
-    send_text(text, user,client)  # 传入text变量，user变量，将接收到的消息复读一遍发送
+    send_text(text, user, client)  # 传入text变量，user变量，将接收到的消息复读一遍发送
 
-
-    for name in list_space_request(client):
-        send_text(text=name,user=user,client=client)
+    for name in list_space_request(client):  # 遍历list_space_request(client)的列表
+        send_text(text=name, user=user, client=client)  # 调用text，user，client
 
 
 def do_customized_event(data: lark.CustomizedEvent) -> None:
@@ -59,12 +58,12 @@ def feishu_webhook():
     return parse_resp(resp)
 
 
-class LarkClientCreator:
+class LarkClientCreator:  # 构造一个LarkClientCreator类
     def __init__(self, app_id, app_secret):
         self.app_id = app_id
         self.app_secret = app_secret
 
-    def create_client(self):
+    def create_client(self):  # 创建lark.Client实例
         # 在这里构建你的 lark.Client 实例
         client = lark.Client.builder() \
             .app_id(self.app_id) \
