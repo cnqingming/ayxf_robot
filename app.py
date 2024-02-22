@@ -4,6 +4,8 @@ from lark_oapi.api.im.v1 import *
 
 from flask import Flask, request, jsonify, json
 
+from document import send_text, list_space_request
+
 app = Flask(__name__)
 
 
@@ -12,42 +14,20 @@ def do_p2_im_message_receive_v1(data: P2ImMessageReceiveV1) -> None:
     text = ctt['text']  # 从json字典里面吧key为text的值取出来
 
     user = data.event.sender.sender_id.open_id
-    send_text(text, user)  # 传入text变量，user变量
+    client = LarkClientCreator(  # 创建client，id and secret都是机器人的
+        app_id="cli_a5f0588fee7a9013",
+        app_secret="pcn3sT4IlA4OwFICXAV6sc7EglUiigHq"
+    ).create_client()
+
+    send_text(text, user,client)  # 传入text变量，user变量，将接收到的消息复读一遍发送
+
+
+    for name in list_space_request(client):
+        send_text(text=name,user=user,client=client)
 
 
 def do_customized_event(data: lark.CustomizedEvent) -> None:
     print(lark.JSON.marshal(data))
-
-
-def send_text(text, user):
-    # 创建client，id and secret都是机器人的
-    client = lark.Client.builder() \
-        .app_id("cli_a5f0588fee7a9013") \
-        .app_secret("pcn3sT4IlA4OwFICXAV6sc7EglUiigHq") \
-        .log_level(lark.LogLevel.DEBUG) \
-        .build()
-
-    # 构造请求对象 传入的receive_id_type要和自己的对应
-    request: CreateMessageRequest = CreateMessageRequest.builder() \
-        .receive_id_type("open_id") \
-        .request_body(CreateMessageRequestBody.builder()
-                      .receive_id(user)
-                      .msg_type("text")
-                      .content("{\"text\":\""+text+"\"}")
-                      .build()) \
-        .build()
-
-    # 发起请求
-    response: CreateMessageResponse = client.im.v1.message.create(request)
-
-    # 处理失败返回
-    if not response.success():
-        lark.logger.error(
-            f"client.im.v1.message.create failed, code: {response.code}, msg: {response.msg}, log_id: {response.get_log_id()}")
-        return
-
-    # 处理业务结果
-    lark.logger.info(lark.JSON.marshal(response.data, indent=4))
 
 
 handler = lark.EventDispatcherHandler.builder("", "sIbA8tRAgaRNQo9MjKsZUbvYMTp1jXo0", lark.LogLevel.DEBUG) \
@@ -79,6 +59,20 @@ def feishu_webhook():
     return parse_resp(resp)
 
 
+class LarkClientCreator:
+    def __init__(self, app_id, app_secret):
+        self.app_id = app_id
+        self.app_secret = app_secret
+
+    def create_client(self):
+        # 在这里构建你的 lark.Client 实例
+        client = lark.Client.builder() \
+            .app_id(self.app_id) \
+            .app_secret(self.app_secret) \
+            .log_level(lark.LogLevel.DEBUG) \
+            .build()
+        return client
+
+
 if __name__ == '__main__':
     app.run(debug=True)
-

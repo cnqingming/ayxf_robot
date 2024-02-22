@@ -15,3 +15,6 @@ class Student(object):
 #private的变量，如果需要修改，可以增加set_score
 bart = Student(name="bart", score=59)
 bart.print_score()
+
+class File(object):
+    def __init__(self, ):
