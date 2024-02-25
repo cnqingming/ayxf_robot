@@ -2,6 +2,7 @@ import lark_oapi as lark  # import是倒入外部库
 import lark_oapi.api.wiki.v2 as wiki_v2
 import lark_oapi.api.im.v1 as im_v1
 from flask import json
+from lark_oapi.api.application.v6 import P2ApplicationBotMenuV6
 
 from my_creator import LarkClientCreator
 
@@ -25,11 +26,21 @@ def do_p2_im_message_receive_v1(data: im_v1.P2ImMessageReceiveV1) -> None:
             send_text(text=name, user=user, client=client)  # 调用text，user，client
 
 
-# todo 我们目前的是只回复消息，后续也要处理菜单的命令，降低使用门槛
-def do_customized_event(data: lark.CustomizedEvent) -> None:
-    print(lark.JSON.marshal(data))
+#  我们目前的是只回复消息，后续也要处理菜单的命令，降低使用门槛
+def do_boot_menu_event(data:P2ApplicationBotMenuV6) -> None:
+     # print(lark.JSON.marshal(data))
+    # 试着用一下飞书提供的接口吧少女！
+    event_name = data.event.event_key
 
+    user = data.event.operator.operator_id.open_id
+    client = LarkClientCreator(  # 创建client，id and secret都是机器人的
+        app_id="cli_a5f0588fee7a9013",
+        app_secret="pcn3sT4IlA4OwFICXAV6sc7EglUiigHq"
+    ).create_client()
 
+    if event_name == '测试':
+        send_text(event_name, user, client)
+    # elif event_name == "帮助"
 def list_space_request(client: lark.Client):
     # 构造请求对象
     request: wiki_v2.ListSpaceRequest = wiki_v2.ListSpaceRequest.builder() \

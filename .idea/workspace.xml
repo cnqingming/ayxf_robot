@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="[Document] Refactor function &#10; &#10;[Client]abstract variable&#10;添加了注释">
-      <change afterPath="$PROJECT_DIR$/my_creator.py" afterDir="false" />
+    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="move massage entry and event entry to document&#10;move LarkClientCreator to my_creator.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/document.py" beforeDir="false" afterPath="$PROJECT_DIR$/document.py" afterDir="false" />
@@ -43,10 +42,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.app.executor": "Run",
+    "Python.dispatcher_handler.executor": "Run",
     "Python.document.executor": "Run",
     "Python.main.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ShowUsagesActions.previewPropertyKey": "true",
     "git-widget-placeholder": "main",
     "settings.editor.selected.configurable": "editor.preferences.completion"
   }
@@ -131,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708620911911</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="move massage entry and event entry to document&#10;move LarkClientCreator to my_creator.py">
+      <option name="closed" value="true" />
+      <created>1708842379146</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708842379146</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +174,18 @@
     <MESSAGE value="add class student and comment" />
     <MESSAGE value="[Document] Refactor function &#10; &#10;[Client]abstract variable" />
     <MESSAGE value="[Document] Refactor function &#10; &#10;[Client]abstract variable&#10;添加了注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Document] Refactor function &#10; &#10;[Client]abstract variable&#10;添加了注释" />
+    <MESSAGE value="move massage entry and event entry to document&#10;move LarkClientCreator to my_creator.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="move massage entry and event entry to document&#10;move LarkClientCreator to my_creator.py" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/document.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

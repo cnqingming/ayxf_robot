@@ -4,7 +4,7 @@ from lark_oapi.api.im.v1 import *
 
 from flask import Flask, request, jsonify, json
 
-from document import send_text, list_space_request, do_p2_im_message_receive_v1, do_customized_event
+from document import send_text, list_space_request, do_p2_im_message_receive_v1, do_boot_menu_event
 
 app = Flask(__name__)
 
@@ -15,9 +15,9 @@ app = Flask(__name__)
 
 handler = lark.EventDispatcherHandler.builder("", "sIbA8tRAgaRNQo9MjKsZUbvYMTp1jXo0", lark.LogLevel.DEBUG) \
     .register_p2_im_message_receive_v1(do_p2_im_message_receive_v1) \
-    .register_p1_customized_event("message", do_customized_event) \
+    .register_p2_application_bot_menu_v6(do_boot_menu_event) \
     .build()
-
+    #.register_p1_customized_event("message", do_customized_event) \
 
 @app.route('/')
 def hello_world():
