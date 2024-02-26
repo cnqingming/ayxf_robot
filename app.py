@@ -1,23 +1,19 @@
 import lark_oapi as lark
 from lark_oapi.adapter.flask import *
-from lark_oapi.api.im.v1 import *
 
-from flask import Flask, request, jsonify, json
+from flask import Flask, request, jsonify
 
-from document import send_text, list_space_request, do_p2_im_message_receive_v1, do_boot_menu_event
+from router import do_boot_menu_event, do_p2_im_message_receive_v1
 
 app = Flask(__name__)
-
-
-
-
-
 
 handler = lark.EventDispatcherHandler.builder("", "sIbA8tRAgaRNQo9MjKsZUbvYMTp1jXo0", lark.LogLevel.DEBUG) \
     .register_p2_im_message_receive_v1(do_p2_im_message_receive_v1) \
     .register_p2_application_bot_menu_v6(do_boot_menu_event) \
     .build()
-    #.register_p1_customized_event("message", do_customized_event) \
+
+
+# .register_p1_customized_event("message", do_customized_event) \
 
 @app.route('/')
 def hello_world():
@@ -40,9 +36,6 @@ def feishu_webhook():
 
     resp = handler.do(parse_req())
     return parse_resp(resp)
-
-
-
 
 
 if __name__ == '__main__':
