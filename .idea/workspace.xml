@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="add do_boot_menu_event&#10;add event_name equal text logic">
-      <change afterPath="$PROJECT_DIR$/lark_client_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router.py" afterDir="false" />
+    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="move document.py functions to router.py and lark_client_functions.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/document.py" beforeDir="false" afterPath="$PROJECT_DIR$/document.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lark_client_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lark_client_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,9 @@
     "Python.app.executor": "Run",
     "Python.dispatcher_handler.executor": "Run",
     "Python.document.executor": "Run",
+    "Python.lark_client_functions.executor": "Run",
     "Python.main.executor": "Debug",
+    "Python.router.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ShowUsagesActions.previewPropertyKey": "true",
@@ -54,6 +54,31 @@
     "settings.editor.selected.configurable": "editor.preferences.completion"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="ayxf_robot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11 (ayxf_robot)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -150,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708846984313</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="move document.py functions to router.py and lark_client_functions.py">
+      <option name="closed" value="true" />
+      <created>1708919053600</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708919053601</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -186,6 +219,18 @@
     <MESSAGE value="[Document] Refactor function &#10; &#10;[Client]abstract variable&#10;添加了注释" />
     <MESSAGE value="move massage entry and event entry to document&#10;move LarkClientCreator to my_creator.py" />
     <MESSAGE value="add do_boot_menu_event&#10;add event_name equal text logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="add do_boot_menu_event&#10;add event_name equal text logic" />
+    <MESSAGE value="move document.py functions to router.py and lark_client_functions.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="move document.py functions to router.py and lark_client_functions.py" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/router.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
