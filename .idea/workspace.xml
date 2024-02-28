@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="move document.py functions to router.py and lark_client_functions.py">
+    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="add function list_space_node&#10;add &quot;查询已有文档&quot; logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lark_client_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lark_client_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +49,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ShowUsagesActions.previewPropertyKey": "true",
     "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "vcs.patch.to.clipboard": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -183,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708919053601</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add function list_space_node&#10;add &quot;查询已有文档&quot; logic">
+      <option name="closed" value="true" />
+      <created>1708925068021</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708925068022</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,17 +227,8 @@
     <MESSAGE value="move massage entry and event entry to document&#10;move LarkClientCreator to my_creator.py" />
     <MESSAGE value="add do_boot_menu_event&#10;add event_name equal text logic" />
     <MESSAGE value="move document.py functions to router.py and lark_client_functions.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="move document.py functions to router.py and lark_client_functions.py" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/router.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="space class changes" />
+    <MESSAGE value="add function list_space_node&#10;add &quot;查询已有文档&quot; logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="add function list_space_node&#10;add &quot;查询已有文档&quot; logic" />
   </component>
 </project>
