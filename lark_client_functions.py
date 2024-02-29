@@ -6,7 +6,6 @@ from lark_oapi.api.wiki import v2 as wiki_v2
 from lark_oapi.api.wiki.v2 import ListSpaceNodeRequest, ListSpaceNodeResponse
 
 
-
 def list_space_request(client: lark.Client):
     # 构造请求对象
     request: wiki_v2.ListSpaceRequest = wiki_v2.ListSpaceRequest.builder() \
@@ -29,12 +28,12 @@ def list_space_request(client: lark.Client):
     return response.data.items  # 简化调用items的逻辑
 
 
-def send_text(text, user, client: lark.Client, receive_id_type):
+def send_text(text, id, client: lark.Client, receive_id_type):
     # 构造请求对象 传入的receive_id_type要和自己的对应
     request: im_v1.CreateMessageRequest = im_v1.CreateMessageRequest.builder() \
         .receive_id_type(receive_id_type) \
         .request_body(im_v1.CreateMessageRequestBody.builder()
-                      .receive_id(user)
+                      .receive_id(id)
                       .msg_type("text")
                       .content("{\"text\":\"" + text + "\"}")
                       .build()) \
@@ -133,5 +132,3 @@ def search_table_record(app_token, table_id, view_id, client: lark.Client):
     # 处理业务结果
     lark.logger.info(lark.JSON.marshal(response.data, indent=4))
     return response.data.items
-
-
