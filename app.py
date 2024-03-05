@@ -1,13 +1,13 @@
 import lark_oapi as lark
 from lark_oapi.adapter.flask import *
 from flask import Flask, request, jsonify
-from router import do_boot_menu_event, do_p2_im_message_receive_v1, schedule_event
+from router import do_boot_menu_event, _do_p2_im_message_receive_v1, schedule_event
 from apscheduler.schedulers.background import BackgroundScheduler
 import logging
 
 app = Flask(__name__)
 handler = lark.EventDispatcherHandler.builder("", "sIbA8tRAgaRNQo9MjKsZUbvYMTp1jXo0", lark.LogLevel.DEBUG) \
-    .register_p2_im_message_receive_v1(do_p2_im_message_receive_v1) \
+    .register_p2_im_message_receive_v1(_do_p2_im_message_receive_v1) \
     .register_p2_application_bot_menu_v6(do_boot_menu_event) \
     .build()
 

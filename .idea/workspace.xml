@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="add functions list_app_table, list_app_table_view, search_table_record, search_node_token, search_table, search_table_view, trigger_birthday_judge&#10;add countdown to birthday logic&#10;add scheduler">
+    <list default="true" id="94d91200-5b8e-4581-b58b-74d134faa806" name="Changes" comment="rename &quot;user&quot; to &quot;open_id&quot;&#10;add lsq open_id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lark_client_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lark_client_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709228383354</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="rename &quot;user&quot; to &quot;open_id&quot;&#10;add lsq open_id">
+      <option name="closed" value="true" />
+      <created>1709229685122</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1709229685122</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,22 +257,7 @@
     <MESSAGE value="add function router_message, router_event, search_node_in_space, search_space_id.&#10;add logic space name input" />
     <MESSAGE value="add functions list_app_table, list_app_table_view, search_table_record, search_node_token, search_table, search_table_view, trigger_birthday_judge&#10;add countdown to birthday logic" />
     <MESSAGE value="add functions list_app_table, list_app_table_view, search_table_record, search_node_token, search_table, search_table_view, trigger_birthday_judge&#10;add countdown to birthday logic&#10;add scheduler" />
-    <option name="LAST_COMMIT_MESSAGE" value="add functions list_app_table, list_app_table_view, search_table_record, search_node_token, search_table, search_table_view, trigger_birthday_judge&#10;add countdown to birthday logic&#10;add scheduler" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/router.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/router.py</url>
-          <line>131</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="rename &quot;user&quot; to &quot;open_id&quot;&#10;add lsq open_id" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename &quot;user&quot; to &quot;open_id&quot;&#10;add lsq open_id" />
   </component>
 </project>

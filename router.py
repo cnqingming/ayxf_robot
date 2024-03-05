@@ -1,3 +1,5 @@
+import asyncio
+import threading
 from datetime import datetime
 
 import lark_oapi.api.im.v1 as im_v1
@@ -7,9 +9,31 @@ from lark_client_functions import list_space_request, send_text, list_space_node
     search_table_record
 from my_creator import LarkClientCreator
 
+loop = asyncio.new_event_loop()
+
+
+def start_thread_loop():
+    asyncio.set_event_loop(loop)
+    loop.run_forever()
+
+
+threading.Thread(target=start_thread_loop).start()
+
+
+def do_p2_im_message_receive_v1(data: im_v1.P2ImMessageReceiveV1) -> None:
+    loop.call_soon_threadsafe(_do_p2_im_message_receive_v1, data)
+
+
+def do_boot_menu_event(data: P2ApplicationBotMenuV6) -> None:
+    loop.call_soon_threadsafe(_do_boot_menu_event, data)
+
+
+def schedule_event():
+    loop.call_soon_threadsafe(_schedule_event)
+
 
 #  todo 将函数重构为Router类的能力，将client重构为该类的属性
-def do_p2_im_message_receive_v1(data: im_v1.P2ImMessageReceiveV1) -> None:
+def _do_p2_im_message_receive_v1(data: im_v1.P2ImMessageReceiveV1) -> None:
     ctt = json.loads(data.event.message.content)  # 要把数据转成json
     text = ctt['text']  # 从json字典里面吧key为text的值取出来
     open_id = data.event.sender.sender_id.open_id
@@ -17,11 +41,11 @@ def do_p2_im_message_receive_v1(data: im_v1.P2ImMessageReceiveV1) -> None:
         app_id="cli_a5f0588fee7a9013",
         app_secret="pcn3sT4IlA4OwFICXAV6sc7EglUiigHq"
     ).create_client()
-    router_message(client, text, open_id)
+    _router_message(client, text, open_id)
 
 
 # 输入用户名和消息内容，根据消息内容路由执行相关逻辑
-def router_message(client, text: str, open_id: str):
+def _router_message(client, text: str, open_id: str):
     if text == "测试":  # 发送测试即可返回相同内容
         send_text(text, open_id, client, "open_id")  # 传入text变量，open_id变量，将接收到的消息复读一遍发送
     elif text == "查询知识库列表":  # 添加了新的逻辑分支
@@ -32,7 +56,7 @@ def router_message(client, text: str, open_id: str):
         search_node_in_space(client=client, space_name=content, open_id=open_id)
 
 
-def do_boot_menu_event(data: P2ApplicationBotMenuV6) -> None:
+def _do_boot_menu_event(data: P2ApplicationBotMenuV6) -> None:
     # print(lark.JSON.marshal(data))
     # 试着用一下飞书提供的接口吧少女！
     event_name = data.event.event_key
@@ -41,11 +65,11 @@ def do_boot_menu_event(data: P2ApplicationBotMenuV6) -> None:
         app_id="cli_a5f0588fee7a9013",
         app_secret="pcn3sT4IlA4OwFICXAV6sc7EglUiigHq"
     ).create_client()
-    router_event(client=client, open_id=open_id, event_name=event_name)
+    _router_event(client=client, open_id=open_id, event_name=event_name)
 
 
 # 输入用户名和事件名，根据事件名路由执行相关逻辑
-def router_event(client, open_id, event_name=None):
+def _router_event(client, open_id, event_name=None):
     # todo 可通过卡片进行逐步选择
     if event_name == '测试':
         send_text(event_name, open_id, client, "open_id")
@@ -55,7 +79,7 @@ def router_event(client, open_id, event_name=None):
         trigger_birthday_judge(client=client, open_id=open_id)
 
 
-def schedule_event():
+def _schedule_event():
     client = LarkClientCreator(  # 创建client，id and secret都是机器人的
         app_id="cli_a5f0588fee7a9013",
         app_secret="pcn3sT4IlA4OwFICXAV6sc7EglUiigHq"
@@ -102,15 +126,17 @@ def trigger_birthday_judge(client, open_id):
 
     # 1. 定位到知识库 - 对应节点 - 对应多维表格 - 对应视图
     space_id = search_space_id(client=client, space_name="成长小组知识库", open_id=open_id)
-    app_token = search_node_token(client=client, space_id=space_id, node_name="【新青年】管理表格", open_id=open_id).obj_token
-    table_id = search_table(client=client, app_token=app_token, table_name="新青年活动事件总表", open_id=open_id).table_id
+    app_token = search_node_token(client=client, space_id=space_id, node_name="【新青年】管理表格",
+                                  open_id=open_id).obj_token
+    table_id = search_table(client=client, app_token=app_token, table_name="新青年活动事件总表",
+                            open_id=open_id).table_id
     view_id = search_table_view(client=client, app_token=app_token, table_id=table_id, table_view_name="总表",
                                 open_id=open_id).view_id
     records = search_table_record(client=client, app_token=app_token, table_id=table_id, view_id=view_id)  # 2. 拿到所有记录，
     # 获取当前年份
     current_year = datetime.now().year
     # 获取今天的日期
-    now = datetime.now()
+    now = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     today_string = now.strftime("%Y-%m-%d")
     output_text = f"今日 {today_string}"
     # 3. 遍历所有记录的生日字段，和今天的日期做对比
