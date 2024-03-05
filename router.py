@@ -164,7 +164,8 @@ def search_node_in_space(client, space_name, open_id):
     # 1. 获取知识库列表，将名称为space_name的知识库数据捞出来，获取space_id
     space_id = search_space_id(
         client=client,
-        space_name=space_name
+        space_name=space_name,
+        open_id=open_id
     )
     # space_id 判空逻辑
     if space_id:
